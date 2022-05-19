@@ -1,0 +1,6 @@
+{
+    "name" : "Termux Studio",
+    "minSdk" : 21,
+    "supportsKotlin": true,
+    "supportsJava": true
+}

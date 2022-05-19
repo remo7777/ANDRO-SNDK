@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+
+// define here sign properties
+
+def sPassword = 'remo773@tbag'
+def kAlias = 'MyBlog@app' // You can write AppName
+def kPassword = 'remo773@tbag'
+def kCompany = 'Nintendo Co., Ltd.'
+
+android {
+    compileSdk ${targetSdkVersion}
+    //buildToolsVersion "32.0.0"
+    //ndkVersion '24.0.8215888'
+
+    defaultConfig {
+        applicationId "$packagename"
+        minSdk ${minSdkVersion}
+        targetSdk ${targetSdkVersion}
+        versionCode 1
+        versionName "1.0"
+	/*externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_static'
+            }
+        }*/
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError = false
+    }
+
+    buildTypes {
+        release {
+            	minifyEnabled true
+                shrinkResources true
+                multiDexEnabled true
+                signingConfig signingConfigs.release
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    /*externalNativeBuild {
+        cmake {
+            version '3.23.1'
+            path 'src/main/cpp/CMakeLists.txt'
+        }
+    } */
+
+    /*
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi-v7a', 'arm64-v8a', 'x86'
+            universalApk false
+        }
+    }
+    */
+    /*
+    applicationVariants.all { variant ->
+        // assign different version code for each output
+        variant.outputs.each { output ->
+            output.versionCodeOverride =
+                    project.ext.versionCodes.get(output.getFilter(OutputFile.ABI)) * 1000000 +
+                            defaultConfig.versionCode
+        }
+    }
+    */
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+// comment out to generate keystore For Your Application
+// command for genarate keystore 
+// `gradle task generateKeystore` // "project_root/app/keystore/release.jks"
+
+/*task generateKeystore() {
+exec {
+        workingDir projectDir
+        commandLine 'mkdir', '-p', 'keystore'
+        }
+exec {
+        workingDir projectDir
+        commandLine 'rm', '-f', 'keystore/release.jks'
+        }
+exec {
+        workingDir projectDir
+        commandLine 'keytool', '-genkey', '-noprompt', '-keystore', 'keystore/release.jks', '-alias', kAlias, '-storepass', sPassword, '-keypass', kPassword, '-dname', 'c=kCompany', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000'
+        }
+} */
+
+dependencies {
+	// NOTE: CodeAssist does NOT support adding dependencies here, 
+	// use the library manager instead
+	implementation 'androidx.appcompat:appcompat:1.3.1'
+        implementation 'com.google.android.material:material:1.4.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+}
