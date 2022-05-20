@@ -213,7 +213,7 @@ if [[ "$1" == "--install-sdk" ]]; then
 	dowload_zip
 	sdk_setup
 fi
-if [[ "$1" == [-h/--help] ]]; then
+if [[ "$1" =~ ^(--help|-h)$ ]]; then
         usage
 fi
 if [[ "$1" == "--size" ]]; then
