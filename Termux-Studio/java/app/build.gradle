@@ -28,7 +28,23 @@ android {
         checkReleaseBuilds false
         abortOnError = false
     }
-
+signingConfigs {
+release {
+	storeFile file("keystore/release.jks")
+	storePassword sPassword
+	keyAlias kAlias
+	keyPassword kPassword
+	}
+}
+buildTypes {
+	release {
+		minifyEnabled true
+		shrinkResources true
+		multiDexEnabled true
+		signingConfig signingConfigs.release
+		proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+	}
     buildTypes {
         release {
             	minifyEnabled true
