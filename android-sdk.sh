@@ -142,7 +142,7 @@ codeassist_app () {
 }
 install_package () {
 #echo
-(apt install --reinstall ncurses-utils coreutils figlet grep unzip curl openjdk-17 gradle -y) &> /dev/null & spin22 "Packages" " Done " "Installing"
+(apt install ncurses-utils coreutils figlet grep unzip curl openjdk-17 gradle -y) &> /dev/null & spin22 "Packages" " Done " "Installing"
 }
 dowload_zip () {
 #yes | cp x* ${PWd}

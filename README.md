@@ -1,6 +1,12 @@
 # ANDRO-SNDK
 Android-SDK and NDK setup on termux And templates for CodeAssist for coding then compile at termux.
 
+## Requirement packages
+
+```
+yes | apt update && apt upgrade && apt indtall coreutils figlet
+```
+
 ## Usage options
 ```
 Usage: bash android-sdk.sh [option]
