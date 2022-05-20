@@ -4,7 +4,8 @@ Android-SDK and NDK setup on termux And templates for CodeAssist for coding then
 ## Requirement packages
 
 `
-apt update && apt upgrade && apt indtall coreutils figlet -y
+yes | apt update && apt upgrade && apt install coreutils figlet
+
 `
 
 ## Usage options
