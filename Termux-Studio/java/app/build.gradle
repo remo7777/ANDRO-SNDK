@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 
 // define here sign properties
-
-def sPassword = 'remo773@tbag'                             def kAlias = 'Duffer' // release.jks Alias Name            def kPassword = 'remo773@tbag'
-// if want to genKeystore fill details                     def oRganization = "O=Geosoft.Pvt.Ltd"
+def sPassword = 'remo773@tbag'
+def kAlias = 'Duffer' // release.jks Alias Name
+def kPassword = 'remo773@tbag'// if want to genKeystore fill details
+def oRganization = "O=Geosoft.Pvt.Ltd"
 //
 def keyGen = tasks.register("KeyGenerated")
 //
