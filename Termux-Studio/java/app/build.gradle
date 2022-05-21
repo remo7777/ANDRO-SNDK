@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 // define here sign properties
 
-def sPassword = 'remo773@tbag'
-def kAlias = 'MyBlog@app' // You can write AppName
-def kPassword = 'remo773@tbag'
-def kCompany = 'Nintendo Co., Ltd.'
-
+def sPassword = 'remo773@tbag'                             def kAlias = 'Duffer' // release.jks Alias Name            def kPassword = 'remo773@tbag'
+// if want to genKeystore fill details                     def oRganization = "O=Geosoft.Pvt.Ltd"
+//
+def keyGen = tasks.register("KeyGenerated")
+//
 android {
     compileSdk ${targetSdkVersion}
     //buildToolsVersion "32.0.0"
@@ -93,7 +93,8 @@ buildTypes {
 // command for genarate keystore 
 // `gradle task generateKeystore` // "project_root/app/keystore/release.jks"
 
-/*task generateKeystore() {
+def vrifyTask = tasks.register("vrifyTask") {
+
 exec {
         workingDir projectDir
         commandLine 'mkdir', '-p', 'keystore'
@@ -104,9 +105,20 @@ exec {
         }
 exec {
         workingDir projectDir
-        commandLine 'keytool', '-genkey', '-noprompt', '-keystore', 'keystore/release.jks', '-alias', kAlias, '-storepass', sPassword, '-keypass', kPassword, '-dname', 'c=kCompany', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000'
+        commandLine 'keytool', '-genkey', '-noprompt', '-alias', kAlias, '-keyalg', 'RSA', '-keysize', '2048', '-sigalg', 'SHA256withRSA', '-keystore', 'keystore/release.jks', '-storepass', sPassword, '-keypass', kPassword, '-dname', oRganization, '-validity', '72000'
         }
-} */
+        println 'KeyStore Gen : \033[4;32mapp/keystore/release.jks\033[0m'
+}
+keyGen.configure {
+dependsOn vrifyTask
+}
+
+/*
+*/
+
+/*
+keytool -genkey -alias Duffer -keyalg RSA -keysize 2048 -sigalg SHA256withRSA -keystore release.jks -storepass remo773@tbag -keypass remo773@tbag -dname "CN=my.server.com, OU=EastCoast, O=MyComp Ltd, L=New York, ST=, C=US" -validity 72000
+*/
 
 dependencies {
 	// NOTE: CodeAssist does NOT support adding dependencies here, 
