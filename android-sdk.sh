@@ -122,7 +122,7 @@ d_size () {
 stl4=$(curl -s -N https://apksos.com/app/com.tyron.code | grep -o "File size: [0-9\.]*M"| awk -F: '/File size:/{sub("\r", "", $2); print $2}')
 (sleep 3) &> /dev/null & spin22 "CodeAssist \e[34mis" ${stl4} "${szf}"
 stl3=$(curl -sIL "${sdk_link}" | awk -F: '/content-length:/{sub("\r", "", $2); print $2}' | numfmt --to iec --format "%8.1f" | tail -1)
-(sleep 3) &> /dev/null & spin22 "${A3} \e[34mis" ${stl3} "${szf}"
+(sleep 3) &> /dev/null & spin22 "${A1}" ${stl3} "${szf}"
 stl2=$(curl -sIL "${ndk_link}" | awk -F: '/content-length:/{sub("\r", "", $2); print $2}' | numfmt --to iec --format "%8.1f" | tail -1)
 (sleep 3) &> /dev/null & spin22 "${A2}" ${stl2} "${szf}"
 stl=$(curl -sIL "${sdk_tool_link}" | awk -F: '/content-length:/{sub("\r", "", $2); print $2}' | numfmt --to iec --format "%8.1f" | tail -1)
