@@ -147,7 +147,7 @@ install_package () {
 dowload_zip () {
 #yes | cp x* ${PWd}
 if [[ -f ${PWd}/${A1}.zip ]] && [[ "$(cat x01 | awk '{print $1}')" == "$(sha1sum ${PWd}/${A1}.zip|awk '{print $1}')" ]]; then
-	(sleep 1) &> /dev/null & spin22 "${A3}" " Done " "Downloading"
+	(sleep 1) &> /dev/null & spin22 "${A1}" " Done " "Downloading"
 else
 (curl --fail --retry 3 --location --output ${PWd}/${A1}.zip "${sdk_link}" --silent) &> /dev/null & progress ${A1};
 fi
