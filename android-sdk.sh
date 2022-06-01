@@ -217,7 +217,8 @@ if [[ "$1" =~ ^(--help|-h)$ ]]; then
         usage
 fi
 if [[ "$1" == "--size" ]]; then
-	if [[ ! `command -v tput` ]]; then
+	check_internet
+	if [[ ! `command -v tput` ]; then
 		echo -e "\e[1;31m[*] \e[1;33mPlease fullfill the requirements:"
 		echo -e ">> \e[4;32mbash android-sdk.sh --pkgs\e[0m"
 		exit 0
