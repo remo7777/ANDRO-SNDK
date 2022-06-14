@@ -222,7 +222,7 @@ if [[ "$1" == "--size" ]]; then
 		echo -e "\e[1;31m[*] \e[1;33mPlease fullfill the requirements:"
 		echo -e ">> \e[4;32mbash android-sdk.sh --pkgs\e[0m"
 		exit 0
-	fi
+	else
 	logo $(tput cols) "ANDROSDK";
         d_size
 fi
