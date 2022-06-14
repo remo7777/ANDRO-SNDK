@@ -225,6 +225,7 @@ if [[ "$1" == "--size" ]]; then
 	else
 	logo $(tput cols) "ANDROSDK";
         d_size
+	fi
 fi
 if [[ "$1" == "--template" ]]; then
 	if [[ -d "${NTP}" ]]; then
