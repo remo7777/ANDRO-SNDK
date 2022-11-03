@@ -210,7 +210,7 @@ if [[ "$1" == "--install-sdk" ]]; then
 		exit 0
 	fi
 	logo $(tput cols) "ANDROSDK";
-	# dowload_zip
+	dowload_zip
 	sdk_setup
 fi
 if [[ "$1" =~ ^(--help|-h)$ ]]; then
