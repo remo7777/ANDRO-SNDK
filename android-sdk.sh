@@ -9,7 +9,7 @@ A2="Android-NDK"
 A3="SDK-Tools"
 ndk_ver="24.0.8215888"
 sdk_link="https://github.com/Lzhiyong/termux-ndk/releases/download/android-sdk/android-sdk-aarch64.zip"
-sdk_tool_link="https://github.com/Lzhiyong/sdk-tools/releases/download/33.0.1/sdk-tools-static-aarch64.zip"
+sdk_tool_link="https://github.com/Lzhiyong/android-sdk-tools/releases/download/33.0.3/android-sdk-tools-static-aarch64.zip"
 ndk_link="https://github.com/Lzhiyong/termux-ndk/releases/download/ndk-r24/android-ndk-r24-aarch64.zip"
 logo () {
 var=$(echo $(( ${1} - 2)))
@@ -184,7 +184,7 @@ chmod 700 ${sdkm}
 (yes | unzip ${PWd}/${A2}.zip -d ${TMPDIR}/
 mv ${TMPDIR}/android-ndk* ${PREFIX}/share/android-sdk/ndk/${ndk_ver}) &> /dev/null & spin22 "${A2}" " Done " "Unzipping"
 (yes | unzip ${PWd}/${A3}.zip -d ${TMPDIR}/
-yes | cp ${TMPDIR}/sdk-tools*/* -r ${PREFIX}/share/android-sdk/
+yes | cp ${TMPDIR}/aarch64*/* -r ${PREFIX}/share/android-sdk/
 ) &> /dev/null & spin22 "${A3}" " Done " "Unzipping"
 }
 termux_template () {
@@ -210,7 +210,7 @@ if [[ "$1" == "--install-sdk" ]]; then
 		exit 0
 	fi
 	logo $(tput cols) "ANDROSDK";
-	dowload_zip
+	# dowload_zip
 	sdk_setup
 fi
 if [[ "$1" =~ ^(--help|-h)$ ]]; then
